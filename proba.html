@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			axios.get("http://imdb2.mars-server.net/api/movies").then(function (response){
+				console.log(response);
+				var html = '<table>';
+				html += '<th>Ime</th><th>Opis</th><th>Slika</th>';
+				for(var i=0; i<response.data.data.length; i++){
+					var el = response.data.data[i];
+					html += '<tr>';
+					html += '<td>' +el.mov_name +"</td>";
+					html += '<td>' +el.mov_desc +"</td>";
+					html += '<td><img src="http://imdb2.mars-server.net' + el.mov_img+'"></td>';
+					html += '</tr>';
+				}
+				html += '</table>';
+				document.write(html);
+			});
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
